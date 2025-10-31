@@ -1,40 +1,19 @@
-# Section 5 – Refactoring Code Smells in Practice
+1. **Primitive Obsession** – Multiple primitive variables (`c`, `a`, `b`) used instead of descriptive variables or objects.
+2. **Duplicate Code / Shotgun Surgery** – Repeated UI update logic in each button event handler.
+3. **Long Function / Feature Envy** – `setup()` was responsible for too many tasks: DOM creation, element lookup, event registration, and UI updates.
+4. **Magic Values** – Hardcoded strings for colors, button IDs, and heading text.
+5. **Inconsistent Naming / Lack of Semantic Names** – Variable names like `bI`, `bD`, `ctr` were unclear.
 
-This activity is designed to help you practice identifying code smells and applying refactoring patterns to a real codebase in CMPM 121, Game Development Patterns.
+## **Refactoring Patterns Applied**
 
-## Assignment Instructions
+1. **Replace Magic Number with Symbolic Constant** – Introduced `colors` and `selectors` objects.
+2. **Introduce Explaining Variable / Object** – Grouped related constants for clarity.
+3. **Extract Method** – Created `updateUI()` to centralize UI updates.
+4. **Rename Variable** – Renamed variables for better readability (`c → counter`, `bI → incrementButton`).
+5. **Encapsulate Variable** – Counter state is now clearly managed in module scope.
 
-For this assignment, your task is to **analyze and improve the code in `src/main.ts`**:
+## **Improvements**
 
-1. **Identify code smells**: Review the code and look for patterns that may cause maintenance issues, reduce readability, or introduce potential bugs.
-2. **Refactor**: Apply **refactoring patterns** as described in Fowler’s _Refactoring_ book to improve the code.
-3. **Document your work**: Once you have completed your refactoring:
-   - Rewrite this README.md
-   - List the **code smells** you identified
-   - Describe the **refactoring patterns** you applied and how they improved the code
-
-## Getting Started
-
-With Codespaces (or another environment supporting devcontainers):
-
-1. Run `deno task dev` to start the development server
-
-Without Codespaces (local VS Code):
-
-1. Install the [Deno](https://docs.deno.com/runtime/getting_started/installation/) runtime.
-2. Install the Deno VS Code extension (must be done only after installing Deno runtime).
-3. Run `./setup-hooks.sh` to enable pre-commit quality checks
-4. Run `deno task dev` to start the development server
-
-The setup script configures Git hooks to automatically run formatting, linting, and type checking before commits.
-
-## Deployment
-
-This project is configured for automatic deployment to GitHub Pages using GitHub Actions.
-
-### Setup GitHub Pages Deployment
-
-1. Go to your repository's Settings → Pages
-2. Under "Source", select "GitHub Actions"
-3. The workflow will automatically deploy on pushes to the `main` branch
-4. Your site will be published at `https://<your-github-username>.github.io/<repository-name>/`
+- **Readability:** Clear, descriptive variable names and organized constants make the code easier to understand.
+- **Maintainability:** Centralized UI update logic reduces repetition; changes only need to be made in one place.
+- **Scalability:** The structure makes it easier to add new buttons or behaviors without modifying multiple places.
